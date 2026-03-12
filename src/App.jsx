@@ -1020,7 +1020,7 @@ export default function App() {
 
             {/* Enhanced Developer Button - Signature Series */}
             <a 
-              href="https://www.linkedin.com/in/chhavi-sharma-769417290/" 
+              href="https://www.linkedin.com/in/kritagyajaiswal19/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="relative group px-8 py-2.5 bg-slate-900 rounded-full border border-slate-800 hover:border-rose-500/50 transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(244,63,94,0.3)] overflow-hidden"
@@ -1028,7 +1028,7 @@ export default function App() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-rose-500/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
               <span className="relative text-xs font-medium text-slate-400 group-hover:text-white transition-colors flex items-center gap-2">
                 <span>Developed by</span>
-                <span className="font-serif italic text-rose-400 font-bold text-sm">Chhavi Sharma</span>
+                <span className="font-serif italic text-rose-400 font-bold text-sm">Kritagya Jaiswal</span>
               </span>
             </a>
           </div>
