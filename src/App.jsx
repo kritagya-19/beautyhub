@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import * as THREE from 'three';
 import './App.css'; 
 import { 
   Menu, X, ShoppingBag, Star, ArrowRight, Play, 
@@ -12,6 +13,7 @@ const useOnScreen = (options) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
@@ -19,14 +21,14 @@ const useOnScreen = (options) => {
       }
     }, options);
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
-  }, [ref, options]);
+  }, [options]);
 
   return [ref, isVisible];
 };
@@ -56,26 +58,8 @@ const Lipstick3D = () => {
     let animationId;
     let mouseX = 0;
     let mouseY = 0;
-    let targetRotationX = 0;
-    let targetRotationY = 0;
 
-    // Load Three.js dynamically
-    const loadThree = () => {
-      return new Promise((resolve, reject) => {
-        if (window.THREE) {
-          resolve(window.THREE);
-          return;
-        }
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-        script.onload = () => resolve(window.THREE);
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    };
-
-    const init = async () => {
-      const THREE = await loadThree();
+    const init = () => {
       setLoading(false);
 
       if (!containerRef.current) return;
